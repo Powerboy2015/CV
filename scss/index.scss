@@ -25,12 +25,13 @@ a{
 
 nav{
     width: 100%;
+    background-color: $banner;
+    height: 10%;
     ul{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         color: aqua;
-        background-color: $banner;
         li{
             list-style: none;
             padding: 2rem;
@@ -40,24 +41,37 @@ nav{
 
 header{
     width: 100%;
-    height: 50vh;
+    height: 100vh;
 }
 
 
 #banner{
     width: 100%;
-    height: 80%;
-    background-color: $banner;
+    height: 90%;
+    // background-color: $banner;
     padding: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.bannerPic{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    img{
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
 
 .info{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: linear-gradient(to bottom right, $gradient1, $gradient2, $gradient3);
 }
 
@@ -80,6 +94,7 @@ h2{
 
 .name{
     width: 40%;
+    padding: 4rem;
 
     h1{
         font-size: 46px;
@@ -89,4 +104,7 @@ h2{
 .profilePic{
     width: 10%;
     height: 20%;
+}
+
+main{
 }
