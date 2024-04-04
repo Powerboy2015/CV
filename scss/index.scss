@@ -27,6 +27,8 @@ nav{
     width: 100%;
     background-color: $banner;
     height: 10%;
+    position: fixed;
+    top: 0;
     ul{
         display: flex;
         flex-direction: row;
@@ -47,27 +49,41 @@ header{
 
 #banner{
     width: 100%;
-    height: 90%;
-    // background-color: $banner;
+    height: 100%;
     padding: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.bannerPic{
+#bannerPics{
     height: 100%;
     width: 100%;
     overflow: hidden;
     position: absolute;
+    background-color: black;
     z-index: -1;
     inset: 0;
     img{
+        display: none;
+        opacity: 0;
         width: 100%;
         object-fit: cover;
     }
 }
 
+.active{
+    display: block !important;
+    animation: appear 10s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+    0% {opacity: 0;}
+    20% {opacity: 1;}
+    80% {opacity: 1;}
+    100% {opacity: 0;}
+}
 
 .info{
     width: 100%;
@@ -94,17 +110,23 @@ h2{
 
 .name{
     width: 40%;
-    padding: 4rem;
 
     h1{
         font-size: 46px;
     }
 }
 
+
+
+section{
+    padding: 4rem;
+}
+
+.me{
+background-color: $me;
+}
+
 .profilePic{
     width: 10%;
     height: 20%;
-}
-
-main{
 }
