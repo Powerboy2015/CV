@@ -81,8 +81,7 @@ header{
 }
 
 .active{
-    animation: appear 10s;
-    animation-fill-mode: forwards;
+    opacity: 1 !important;
 }
 
 @keyframes appear {
