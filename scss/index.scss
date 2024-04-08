@@ -6,13 +6,14 @@ $gradient3: #8C0000;
 $white: white;
 $black: black;
 
+@use 'nav';
 @use 'flex-grid';
 @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 body{
     font-family: 'Fira Mono';
-    font-size: 24px;
+    font-size: clamp(6px, 2vw, 24px); 
+    line-height: 1.5;
 }
-
 *{
     box-sizing: border-box;
     margin: 0;
@@ -22,25 +23,6 @@ body{
 a{
     text-decoration: none;
     color: inherit;
-}
-
-nav{
-    width: 100%;
-    background-color: $banner;
-    height: 10%;
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    ul{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        color: aqua;
-        li{
-            list-style: none;
-            padding: 2rem;
-        }
-    }
 }
 
 header{
@@ -58,7 +40,6 @@ header{
     align-items: center;
 
     position: relative;
-    top: 10%;
 }
 
 #bannerPics{
@@ -98,6 +79,12 @@ header{
     border-radius: 40px;
     padding: 2rem;
     color: $white;
+
+    ul{
+        li{
+            line-height: 1.3;
+        }
+    }
 }
 
 h1,h2{
@@ -112,17 +99,18 @@ h2{
 }
 
 .name{
-    width: 40%;
+    width: clamp(15rem, 20vw, 100%);
+    position: absolute;
     
     h1{
-        font-size: 46px;
+        font-size: 2rem;
     }
 }
 
 
 
 section{
-    padding: 4rem;
+    padding: 2rem;
 }
 
 .me{
@@ -132,21 +120,23 @@ section{
 
 img.profilePic{
     float: right;
-    width: 12%;
+    width: clamp(5rem,10vw,8%);
+    object-fit: cover;
 }
 
     .info{
         width: 100%;
-        height: 100vh;
+        min-height: 100vh;
         background: linear-gradient(to bottom right, $gradient1, $gradient2, $gradient3);
-        padding: 3rem;
-        justify-content: flex-end;
+        justify-content: center;
+        gap: 1rem;
         .text{
-            margin: 1rem;
+
             p{
                 text-wrap: wrap;
             }
         }
+
     }
 
 .skills {
@@ -158,5 +148,15 @@ img.profilePic{
         margin: 1rem;
         text-align: center;
         list-style: none;
+    }
+}
+
+@media screen and (min-width: 1500px) {
+    .skills{
+        height: 90vh;
+    }
+
+    .info {
+        height: 100vh;
     }
 }
