@@ -126,7 +126,7 @@ function buildRepoDivs(cookieName){
 if(getCookie(user) == undefined) {
     FetchRepoInfo().then((data) =>{
         console.log(data);
-        createCookie(user,data,500);
+        createCookie(user,data,1500);
         buildRepoDivs(user);
     })
 } else {
