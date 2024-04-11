@@ -1,7 +1,15 @@
 @use 'nav';
 @use 'flex-grid';
-
 @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+$banner: #010728;
+$me: #000D53;
+$gradient1: #00D1FF;
+$gradient2: #252299;
+$gradient3: #8C0000;
+$white: white;
+$black: black;
+
 body,html{
     font-family: 'Fira Mono';
     font-size: clamp(7px, 2vw, 24px); 
@@ -29,7 +37,8 @@ h2{
 header{
     width: 100%;
     height: 40vh;
-    background-color: grey;
+    background-color: $banner;
+    // background-image: url('../img/starPattern.png');
 
     display: flex;
     justify-content: center;
