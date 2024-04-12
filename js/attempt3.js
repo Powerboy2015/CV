@@ -36,10 +36,10 @@ async function FetchRepoInfo() {
     const repos = [];
     for (i=0; i != repoNames.length;i++) {
         const repo = repoNames[i];
-        const lastCommit = await fetchLastCommit(user,repo.name);
+        // const lastCommit = await fetchLastCommit(user,repo.name);
 
         let time = repo.updated_at.split('T')
-        repos.push(new repoObj(repo.name,repo.description,time[0],lastCommit));
+        repos.push(new repoObj(repo.name,repo.description,time[0]));
     }
     return repos;
 }
@@ -100,17 +100,11 @@ function CreateRepoEl(repoData,toElement) {
     repoLUpdated.classList.add('LatestUpdate');
     repoLUpdated.innerHTML = repoData.lastUpdate;
 
-    //creates an p element with the latest commit description.
-    let repoLCommit = document.createElement('p');
-    repoLCommit.classList.add('lastCommit');
-    repoLCommit.innerHTML = repoData.lastCommit;
 
     // appends all Elements
     repository.appendChild(repoTitle);
     repository.appendChild(repoDesc);
     repository.appendChild(repoLUpdated);
-    repository.appendChild(repoLCommit);
-
     section.appendChild(repository)
     return toElement.appendChild(section);
 }
