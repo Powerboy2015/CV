@@ -1,16 +1,19 @@
 // This has caused me way more pain then it should have. I am so done with life right now.
 class repoObj
 {
-    constructor(name,desc,updated,lastCommit) {
+    constructor(name,desc,updated,link) {
         this.name = name;
         this.desc = desc;
         this.lastUpdate = updated;
-        this.lastCommit = lastCommit;
+        this.link = link
     }
 }
 
 const user = 'Powerboy2015';
-const repoContainer = document.querySelector('div.repos');
+const school = 'ZicoBacker';
+
+const userContainer = document.querySelector('#main');
+const schoolContainer = document.querySelector('#school');
 
 // fetches user repo list and returns a list of the repo names.
 async function getRepoData(user) {
@@ -31,15 +34,15 @@ async function fetchLastCommit(user,repo){
 }
 
 
-async function FetchRepoInfo() {
-    const repoNames = await getRepoData(user);
+async function FetchRepoInfo(accountName) {
+    const repoNames = await getRepoData(accountName);
     const repos = [];
     for (i=0; i != repoNames.length;i++) {
         const repo = repoNames[i];
         // const lastCommit = await fetchLastCommit(user,repo.name);
 
-        let time = repo.updated_at.split('T')
-        repos.push(new repoObj(repo.name,repo.description,time[0]));
+        let time = repo.updated_at.split('T');
+        repos.push(new repoObj(repo.name,repo.description,time[0],repo.html_url));
     }
     return repos;
 }
@@ -100,33 +103,48 @@ function CreateRepoEl(repoData,toElement) {
     repoLUpdated.classList.add('LatestUpdate');
     repoLUpdated.innerHTML = repoData.lastUpdate;
 
+    //creates a link to check out the repo
+    let repoLink = document.createElement('a');
+    repoLink.href = repoData.link;
+    repoLink.classList.add('repoLink');
+    repoLink.innerHTML='check out repo!';
+
 
     // appends all Elements
     repository.appendChild(repoTitle);
     repository.appendChild(repoDesc);
     repository.appendChild(repoLUpdated);
-    section.appendChild(repository)
+    repository.appendChild(repoLink);
+    section.appendChild(repository);
     return toElement.appendChild(section);
 }
 
-function buildRepoDivs(cookieName){
+function buildRepoDivs(cookieName,container){
     const repoArray = getCookie(cookieName);
     for (i=0; i != repoArray.length; i++) {
-        CreateRepoEl(repoArray[i],repoContainer);
+        CreateRepoEl(repoArray[i],container);
     }
 }
 
+
+
 // if the user cookie isnt set, start making a cookie for it.
 if(getCookie(user) == undefined) {
-    FetchRepoInfo().then((data) =>{
+    FetchRepoInfo(user).then((data) =>{
         console.log(data);
         createCookie(user,data,1500);
-        buildRepoDivs(user);
+        buildRepoDivs(user,userContainer);
     })
 } else {
-    buildRepoDivs(user);
+    buildRepoDivs(user,userContainer);
 }
-console.log(getCookie(user));
 
-
-
+if(getCookie(school) == undefined) {
+    FetchRepoInfo(school).then((data) =>{
+        console.log(data);
+        createCookie(school,data,1500);
+        buildRepoDivs(school,schoolContainer);
+    })
+} else {
+    buildRepoDivs(school,schoolContainer);
+}

@@ -58,6 +58,12 @@ main{
     min-height: 60vh;
     padding: 2rem;
     position: relative;
+
+ 
+}
+
+.school{
+ margin-top: 4rem;
 }
 
 .repos{
@@ -105,6 +111,14 @@ main{
             content: 'Latest commit: ';
             font-size: 1.1rem;
             font-weight: 600;
+        }
+    }
+
+    .repoLink{
+        color: $gradient2;
+        transition: color .1s ease-in-out;
+        &:hover{
+            color: lighten($gradient2,20);
         }
     }
 }
