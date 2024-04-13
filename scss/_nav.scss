@@ -1,3 +1,5 @@
+@use 'flex-grid';
+
 $NavMain: rgb(20,20,20);
 
 footer{
@@ -52,15 +54,13 @@ li{
 .navMenu {
     color: white;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    gap: 8px;
-    height: 70%;
+    justify-content: space-around;
+    height: 80%;
     padding: 2rem;
 
     .navItem{
-        width: calc(100% - 8px);
+        // width: 20%;
         height: 100%;
         a{
             color: inherit;
@@ -73,20 +73,26 @@ li{
 .innerItem{
     height: 100%;
     // background-color: lighten($black,10);
-    display: block;
+    // display: block;
+    display: flex;
+    flex-direction: column;
     padding: 1rem 0;
     transition: all 0.1s ease-in-out;
     h3{
         text-align: center;
+        padding: 0.1rem;
     }
     img{
-        padding: 0.5rem;
-        height:88%;
-        width: 100%;
+        // padding: 0.5rem;
+        height:80%;
+        width: 80%;
         object-fit: cover;
+        object-position: center;
+        align-self: center;
+        background-color: white;
     }
     &:hover{
-        scale: 0.95;
+        scale: 1.05;
         animation: borderColor 0.5s forwards;
         border: 1px lighten($NavMain,50) solid;
     }
@@ -99,4 +105,8 @@ li{
     to{
         border: 1px ligthen($NavMain,50) solid;
     }
+}
+
+.op-left{
+    object-position: 5% 50% !important;
 }
