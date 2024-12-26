@@ -1,7 +1,6 @@
 :root {
-    --Main-Color: #151846;
+    --Main-Color: hsl(236, 30%, 5%);
     --Main-Text-Color: hsl(204, 54%, 80%);
-
 
     --phone-screen-width: 360px;
     --tablet-screen-width: 768px;

@@ -1,0 +1,27 @@
+.desktopNavigation {
+    padding: 5rem 1rem 1rem 1rem;
+    * {
+        color: white;
+        text-decoration: none;
+    }
+    ul {
+        list-style-type: none;
+        display: grid;
+        gap: 16px;
+        padding-left: 0.5rem;
+    }
+    a {
+        cursor: pointer;
+        user-select: none;
+        color: hsl(0, 0%, 80%);
+
+        &.active {
+            color: white;
+        }
+
+        &:hover {
+            font-size: 1.1rem;
+            transition: font-size 0.2s ease;
+        }
+    }
+}

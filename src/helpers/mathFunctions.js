@@ -1,6 +1,5 @@
-export default class mathFunctions
-{
-    static ClampInt(min, value, max){
+export default class mathFunctions {
+    static ClampInt(min, value, max) {
         if (min > value) {
             return min;
         } else if (max < value) {
@@ -10,4 +9,3 @@ export default class mathFunctions
         }
     }
 }
-

@@ -1,18 +1,25 @@
 @import "./pallete.css";
-body::-webkit-scrollbar{ 
-  display: none;
+body::-webkit-scrollbar {
+    display: none;
 }
 
-body{
-  overflow: hidden;
-  background-color: var(--Main-Color);
+body {
+    overflow: hidden;
+    background-color: var(--Main-Color);
 }
 
-main > section:nth-child(1)
-{
-  top: 0;
+main > section:nth-child(1) {
+    top: 0;
 }
 
-section.Content > h1, h2 {
-  text-align: center;
+section.Content > h2 {
+    text-align: left;
+}
+
+#root {
+    display: flex;
+}
+
+main {
+    flex: 1;
 }
