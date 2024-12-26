@@ -1,4 +1,9 @@
 :root {
     --Main-Color: #151846;
-    --Main-Text-Color: #8ebddd;
+    --Main-Text-Color: hsl(204, 54%, 80%);
+
+
+    --phone-screen-width: 360px;
+    --tablet-screen-width: 768px;
+    --desktop-screen-width: 1080px;
 }

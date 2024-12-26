@@ -2,6 +2,7 @@ import './css/App.css'
 // import HillTopSvg from './components/HillTopSvg'
 import Curtain from './components/Curtain'
 import ContentSection from './components/ContentSection'
+import PhoneCurtain from './components/PhoneCurtain';
 // import gsap from 'gsap';
 import mathFunctions from './helpers/mathFunctions';
 import GsapTimelines from './helpers/GsapTimelines';
@@ -36,27 +37,36 @@ function App() {
         }
       });
   }
-
   // resets window so I don't cry about it being halfway if it shouldn't be
    useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  console.log(window.innerWidth);
+  let isDesktop = window.innerWidth > 768 ? true : false;
+  console.log(isDesktop);
+
+
+
   return (
     <>
-      <Curtain TimelineFinish={EnableScollHandling}></Curtain>
+      {isDesktop ? (
+        <Curtain TimelineFinish={EnableScollHandling}></Curtain>
+      ): (
+        <PhoneCurtain TimelineFinish={EnableScollHandling}></PhoneCurtain>
+      )}
       <main>
         <ContentSection>
           <h1>hello world</h1>
         </ContentSection>
         <ContentSection>
-          <h1>hello world 2</h1>
+          <h2>hello world 2</h2>
         </ContentSection>
         <ContentSection>
-          <h1>hello world 3</h1>
+          <h2>hello world 3</h2>
         </ContentSection>
         <ContentSection>
-          <h1>hello world 4</h1>
+          <h2>hello world 4</h2>
         </ContentSection>
       </main>
     </>
