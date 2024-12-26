@@ -1,0 +1,38 @@
+#curtain{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(17, 17, 17);
+    position: absolute;
+    z-index: 100;
+    color: whitesmoke;
+    overflow: hidden;
+
+    .middleBox{
+        position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+
+    }   
+}
+
+.boxText{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+
+    #IntroductionName{
+        margin: 0;
+    }
+}
+
+.cube{
+    position: absolute;
+    left: 0;
+    top: 0;
+    aspect-ratio: 1/1;
+    border-radius: 16px;
+    width: 200px;
+    background-color: white;
+}
