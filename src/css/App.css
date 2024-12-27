@@ -3,7 +3,8 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-body {
+body,
+#root {
     overflow: hidden;
     background-color: var(--Main-Color);
 }

@@ -7,6 +7,9 @@ import ContentSection from "./components/ContentSection";
 import PhoneCurtain from "./components/PhoneCurtain";
 import DesktopNav from "./components/DesktopNav";
 
+// importing page sections
+import LandingSection from "./components/LandingSection";
+
 // importing functions
 import mathFunctions from "./helpers/mathFunctions";
 import GsapTimelines from "./helpers/GsapTimelines";
@@ -16,16 +19,11 @@ function App() {
     const [sections, setSections] = useState([]);
     const [currentSection, setCurrentSection] = useState(0);
     const [scrollIsActive, setScrollIsActive] = useState(false);
-    let activeTl = undefined;
 
     // part of the navigation
     function ScrollToPage(newSection) {
         setCurrentSection(newSection);
-        activeTl = GsapTimelines.AnimatePanel(
-            sections,
-            newSection,
-            sections.length
-        );
+        GsapTimelines.AnimatePanel(sections, newSection, sections.length);
     }
 
     window.onwheel = (event) => {
@@ -78,16 +76,17 @@ function App() {
 
             <main>
                 <ContentSection>
-                    <h2>Hello world</h2>
+                    {/* <h2>Home</h2> */}
+                    <LandingSection></LandingSection>
                 </ContentSection>
                 <ContentSection>
-                    <h2>hello world 2</h2>
+                    <h2>Who am I?</h2>
                 </ContentSection>
                 <ContentSection>
-                    <h2>hello world 3</h2>
+                    <h2>My project</h2>
                 </ContentSection>
                 <ContentSection>
-                    <h2>hello world 4</h2>
+                    <h2>Contact</h2>
                 </ContentSection>
             </main>
         </>
