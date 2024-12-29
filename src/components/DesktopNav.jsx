@@ -2,15 +2,18 @@
 import "/src/css/desktopNavigation.css";
 
 // eslint-disable-next-line react/prop-types
-export default function DesktopNav({ ScrollToPageNumber }) {
+export default function DesktopNav({ ScrollToPageNumber, ChangeActiveClass }) {
     function ScrollToPage(sectionNumber, newActive) {
-        let currentActive = document.querySelector("a.active");
-        currentActive.classList.remove("active");
-        //
+        ChangeActiveClass(newActive);
         ScrollToPageNumber(sectionNumber - 1);
-        //
-        newActive.classList.add("active");
     }
+
+    // function ChangeActiveClass(newActive) {
+    //     let currentActive = document.querySelector("li > a.active");
+    //     currentActive.classList.remove("active");
+    //     newActive.classList.add("active");
+    //     return currentActive;
+    // }
 
     return (
         <>

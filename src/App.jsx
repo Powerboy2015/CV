@@ -22,10 +22,25 @@ function App() {
 
     // part of the navigation
     function ScrollToPage(newSection) {
+        ChangeActiveClass(newSection);
         setCurrentSection(newSection);
         GsapTimelines.AnimatePanel(sections, newSection, sections.length);
     }
 
+    function ChangeActiveClass(newActive) {
+        let currentActive = document.querySelector("li > a.active");
+
+        // if we give the sectionNumber it will automatically find the correct navlink.
+        if (typeof newActive === "number") {
+            newActive = document.querySelectorAll("li > a")[newActive];
+        }
+
+        currentActive.classList.remove("active");
+        newActive.classList.add("active");
+        return currentActive;
+    }
+
+    // ads the ability to scroll up and down the page
     window.onwheel = (event) => {
         if (!scrollIsActive) {
             return console.warn("waiting for intro animation to finish...");
@@ -64,7 +79,10 @@ function App() {
                             setScrollIsActive(true);
                         }}
                     ></Curtain>
-                    <DesktopNav ScrollToPageNumber={ScrollToPage}></DesktopNav>
+                    <DesktopNav
+                        ScrollToPageNumber={ScrollToPage}
+                        ChangeActiveClass={ChangeActiveClass}
+                    ></DesktopNav>
                 </>
             ) : (
                 <PhoneCurtain
