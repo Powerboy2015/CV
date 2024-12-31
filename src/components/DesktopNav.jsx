@@ -52,16 +52,6 @@ export default function DesktopNav({ ScrollToPageNumber, ChangeActiveClass }) {
                                 Projects
                             </a>
                         </li>
-                        <li>
-                            <a
-                                id="#About"
-                                onClick={(el) => {
-                                    ScrollToPage(4, el.target);
-                                }}
-                            >
-                                Contact
-                            </a>
-                        </li>
                     </ul>
                 </nav>
             </aside>

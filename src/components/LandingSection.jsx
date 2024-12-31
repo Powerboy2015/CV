@@ -2,6 +2,7 @@
 import "/src/css/LandingSection.css";
 
 // import Threejs renderer
+import webGL from "three/addons/capabilities/WebGL.js";
 import GlobeRender from "../helpers/GlobeRender";
 import { useEffect, useRef, useState } from "react";
 
@@ -10,9 +11,9 @@ export default function LandingSection() {
     const [globe, setGlobe] = useState(null);
 
     useEffect(() => {
-        if (renderEl.current && !globe) {
+        if (renderEl.current && !globe && webGL.isWebGL2Available()) {
             const newGlobe = new GlobeRender(
-                document.querySelector("div.upper")
+                document.querySelector("div.innerRender")
             );
             setGlobe(newGlobe);
         }
@@ -20,9 +21,7 @@ export default function LandingSection() {
 
     useEffect(() => {
         if (globe) {
-            globe.CreateCube(1, 1, 1, 0x00ff00);
-            globe.setCamera(0, 0, 5);
-            globe.startAnimation();
+            globe.setupScene();
         }
     }, [globe]);
 
@@ -30,7 +29,9 @@ export default function LandingSection() {
         <>
             <div className="LandingSection">
                 {/* flexed div */}
-                <div className="upper" ref={renderEl}></div>
+                <div className="upper">
+                    <div className="innerRender" ref={renderEl}></div>
+                </div>
                 <div className="lower">
                     <div className="content">
                         <div className="title">
@@ -38,8 +39,8 @@ export default function LandingSection() {
                         </div>
                         <div className="paragraph">
                             <p>
-                                I&apos;ve been programming for about two years
-                                now
+                                Fullstack developer with interests in game and
+                                application building
                             </p>
                         </div>
                     </div>

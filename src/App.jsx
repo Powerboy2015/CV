@@ -8,7 +8,9 @@ import PhoneCurtain from "./components/PhoneCurtain";
 import DesktopNav from "./components/DesktopNav";
 
 // importing page sections
+import AboutMe from "./components/AboutMe";
 import LandingSection from "./components/LandingSection";
+import ProjectSection from "./components/ProjectSection";
 
 // importing functions
 import mathFunctions from "./helpers/mathFunctions";
@@ -98,13 +100,11 @@ function App() {
                     <LandingSection></LandingSection>
                 </ContentSection>
                 <ContentSection>
-                    <h2>Who am I?</h2>
+                    <AboutMe></AboutMe>
                 </ContentSection>
                 <ContentSection>
                     <h2>My project</h2>
-                </ContentSection>
-                <ContentSection>
-                    <h2>Contact</h2>
+                    <ProjectSection></ProjectSection>
                 </ContentSection>
             </main>
         </>

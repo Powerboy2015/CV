@@ -1,6 +1,8 @@
 :root {
-    --Main-Color: hsl(236, 30%, 5%);
-    --Main-Text-Color: hsl(204, 54%, 80%);
+    --Main-Color: #090911;
+    --Main-Text-Color: #b0d2e8;
+    --Secondary-Text-Color: rgba(176, 210, 232, 0.85);
+    --Tetiary-Text-Color: rgba(176, 210, 232, 0.5);
 
     --phone-screen-width: 360px;
     --tablet-screen-width: 768px;
