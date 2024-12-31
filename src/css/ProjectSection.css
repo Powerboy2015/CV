@@ -7,7 +7,8 @@ div.ProjectSection {
     overflow-y: hidden;
     .inner {
         display: grid;
-        grid-template-rows: repeat(4, 1fr);
+        width: inherit;
+        height: inherit;
         gap: 5rem;
     }
 }

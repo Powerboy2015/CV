@@ -8,3 +8,11 @@ createRoot(document.getElementById("root")).render(
         <App />
     </StrictMode>
 );
+
+// Things that needs to be done before release. Prio top > bottom:
+
+// more projects page
+// includes react routing
+
+// mobile nav
+// mobile version. Try to take a look at it or womp womp

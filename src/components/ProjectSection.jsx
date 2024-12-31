@@ -23,6 +23,7 @@ export default function ProjectSection() {
                         ProjectImage="/src/assets/NewCV.png"
                     ></ProjectElement>
                 </div>
+                <a href="/project">See more projects</a>
             </div>
         </>
     );

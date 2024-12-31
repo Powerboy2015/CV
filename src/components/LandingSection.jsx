@@ -40,7 +40,7 @@ export default function LandingSection() {
                         <div className="paragraph">
                             <p>
                                 Fullstack developer with interests in game and
-                                application building
+                                application development
                             </p>
                         </div>
                     </div>
