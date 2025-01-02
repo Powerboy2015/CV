@@ -35,7 +35,7 @@ export default function LandingSection() {
                 <div className="lower">
                     <div className="content">
                         <div className="title">
-                            <h2>Hi,I&apos;m zico</h2>
+                            {/* <h2>Hi,I&apos;m zico</h2> */}
                         </div>
                         <div className="paragraph">
                             <p>

@@ -11,7 +11,7 @@ export default function AboutMe() {
                     <article>
                         <h2>About me</h2>
                         <p>
-                            I&apos;m Zico, 20 years old, and currently studing
+                            I&apos;m currently studing
                             webdevelopment at MBOUtrecht. I live in nieuwgein
                             with my girlfriend. I enjoy learning new things,
                             especially in programming.
