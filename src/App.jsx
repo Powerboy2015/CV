@@ -15,13 +15,13 @@ import ProjectSection from "./components/ProjectSection";
 // importing functions
 import mathFunctions from "./helpers/mathFunctions";
 import GsapTimelines from "./helpers/GsapTimelines";
-import { useEffect, useState } from "react";
-import { cos } from "three/tsl";
+import { useEffect, useState, useRef } from "react";
 
 function App() {
     const [sections, setSections] = useState([]);
     const [currentSection, setCurrentSection] = useState(0);
-    const [scrollIsActive, setScrollIsActive] = useState(false);
+    const scrollIsActive = useRef(false);
+    const scrollCooldown = useRef(false);
 
     // const [ticking, setTicking] = useState(false);
 
@@ -45,45 +45,37 @@ function App() {
         return currentActive;
     }
 
-    let lastPost = 0;
-    let ticking = false;
-    window.onscroll = (event) => {
-        let pos = lastPost - window.scrollY;
-        if (!ticking && scrollIsActive) {
-            if (pos > 25) {
-                // let newcurrent = currentSection - 1;
-                // ScrollToPage(
-                //     mathFunctions.ClampInt(0, newcurrent, sections.length - 1)
-                // );
-                console.log("up");
-                lastPost = window.scrollY;
-
-
-            } else if (pos < 25) {
-                // let newcurrent = currentSection + 1;
-                // ScrollToPage(
-                //     mathFunctions.ClampInt(0, newcurrent, sections.length - 1)
-                // );
-                console.log("down");
-                lastPost = window.scrollY;
-
-            }
-            console.log(event);
-            console.log("old: " + lastPost + " New: " + window.scrollY);
-
-            ticking = true;
-
+    useEffect(() => {
+        const scroller = (event) => {
+            event.preventDefault();
+            if (scrollCooldown.current || !scrollIsActive.current) return;
+            scrollCooldown.current = true;
             setTimeout(() => {
-                console.log("ticking is false");
-                ticking = false;
-            }, 1000);
-        } else if (!scrollIsActive) {
-            window.requestAnimationFrame(() => {
-                window.scroll(0, 0);
-                console.warn("waiting for intro animation to finish...");
-            });
-        }
-    };
+                scrollCooldown.current = false;
+            }, 500);
+
+            // increases or decreases currentsection value based on going up or down, also made a clamp for it.
+            if (event.deltaY > 0) {
+                let newcurrent = currentSection + 1;
+                ScrollToPage(
+                    mathFunctions.ClampInt(0, newcurrent, sections.length - 1)
+                );
+            } else if (event.deltaY < 0) {
+                let newcurrent = currentSection - 1;
+                ScrollToPage(
+                    mathFunctions.ClampInt(0, newcurrent, sections.length - 1)
+                );
+            }
+        };
+
+        document
+            .querySelector("main")
+            .addEventListener("wheel", scroller, { passive: false });
+        return () =>
+            document
+                .querySelector("main")
+                .removeEventListener("wheel", scroller);
+    });
 
     // function InitiateScrolling() {}
 
@@ -123,17 +115,20 @@ function App() {
                 <>
                     <Curtain
                         TimelineFinish={() => {
-                            setScrollIsActive(true);
-                        }}></Curtain>
+                            scrollIsActive.current = true;
+                        }}
+                    ></Curtain>
                     <DesktopNav
                         ScrollToPageNumber={ScrollToPage}
-                        ChangeActiveClass={ChangeActiveClass}></DesktopNav>
+                        ChangeActiveClass={ChangeActiveClass}
+                    ></DesktopNav>
                 </>
             ) : (
                 <PhoneCurtain
                     TimelineFinish={() => {
-                        setScrollIsActive(true);
-                    }}></PhoneCurtain>
+                        scrollIsActive.current = true;
+                    }}
+                ></PhoneCurtain>
             )}
 
             <main>
