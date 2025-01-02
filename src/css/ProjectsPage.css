@@ -1,0 +1,62 @@
+@import "./pallete.css";
+
+#root {
+    display: block !important;
+    height: fit-content;
+}
+
+div.ProjectsPage {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        text-align: center;
+        font-size: 5rem;
+
+        @media (max-width: 768px) {
+            font-size: 2rem;
+        }
+    }
+
+    * {
+        color: var(--Main-Text-Color);
+    }
+
+    .Projects {
+        width: 100%;
+        .inner {
+            display: grid;
+            width: inherit;
+            height: inherit;
+            gap: 10rem;
+            padding: 2rem;
+        }
+    }
+}
+
+div.back-to-main {
+    @media (max-width: 768px) {
+        position: sticky !important;
+
+        a {
+            font-size: 1.5rem !important;
+        }
+    }
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    padding: 1rem;
+
+    a {
+        color: var(--Main-Text-Color);
+        display: block;
+        text-align: center;
+        font-size: 3rem;
+        width: 100%;
+    }
+}

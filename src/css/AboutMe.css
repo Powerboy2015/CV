@@ -28,4 +28,33 @@ div.AboutMeSection {
             color: var(--Secondary-Text-Color);
         }
     }
+
+    @media (max-width: 911px) {
+        display: flex;
+        flex-direction: column;
+        .title {
+            > h2 {
+                position: relative;
+                font-size: 2rem;
+                transform: none;
+                left: 0;
+                top: 0;
+                text-align: center;
+            }
+        }
+
+        .inner {
+            padding-top: 1rem;
+            font-size: 16px;
+            grid-template-rows: none;
+            grid-template-columns: none;
+            height: 100%;
+            article {
+                padding: 0 1rem;
+                > p {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
 }

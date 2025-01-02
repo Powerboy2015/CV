@@ -1,4 +1,4 @@
-// importing css
+// // importing css
 import "./css/App.css";
 
 // importing components
@@ -17,6 +17,8 @@ import mathFunctions from "./helpers/mathFunctions";
 import GsapTimelines from "./helpers/GsapTimelines";
 import { useEffect, useState, useRef } from "react";
 
+// the most useless router ever.
+
 function App() {
     const [sections, setSections] = useState([]);
     const [currentSection, setCurrentSection] = useState(0);
@@ -34,19 +36,21 @@ function App() {
 
     function ChangeActiveClass(newActive) {
         let currentActive = document.querySelector("li > a.active");
-
         // if we give the sectionNumber it will automatically find the correct navlink.
         if (typeof newActive === "number") {
             newActive = document.querySelectorAll("li > a")[newActive];
         }
-
         currentActive.classList.remove("active");
         newActive.classList.add("active");
         return currentActive;
     }
 
+    // the useEffect for the scroller.
     useEffect(() => {
-        const scroller = (event) => {
+        const scrollEl = document.querySelector("main");
+
+        // the mobile scroller code
+        const scrollerDesktop = (event) => {
             event.preventDefault();
             if (scrollCooldown.current || !scrollIsActive.current) return;
             scrollCooldown.current = true;
@@ -68,36 +72,51 @@ function App() {
             }
         };
 
-        document
-            .querySelector("main")
-            .addEventListener("wheel", scroller, { passive: false });
-        return () =>
-            document
-                .querySelector("main")
-                .removeEventListener("wheel", scroller);
+        // the functions for mobile scrolling
+
+        let startY = 0;
+
+        const scrollerMobileStart = (event) => {
+            startY = event.touches[0].clientY;
+        };
+
+        // needs the passive:false. just incase
+        const scrollerMobileMove = (event) => {
+            event.preventDefault();
+        };
+
+        const scrollerMobileEnd = (event) => {
+            const endY = event.changedTouches[0].clientY;
+
+            if (startY > endY) {
+                let newcurrent = currentSection + 1;
+                ScrollToPage(
+                    mathFunctions.ClampInt(0, newcurrent, sections.length - 1)
+                );
+            } else if (startY < endY) {
+                let newcurrent = currentSection - 1;
+                ScrollToPage(
+                    mathFunctions.ClampInt(0, newcurrent, sections.length - 1)
+                );
+            }
+        };
+
+        scrollEl.addEventListener("wheel", scrollerDesktop, {
+            passive: false,
+        });
+        scrollEl.addEventListener("touchstart", scrollerMobileStart);
+        scrollEl.addEventListener("touchmove", scrollerMobileMove, {
+            passive: false,
+        });
+        scrollEl.addEventListener("touchend", scrollerMobileEnd);
+
+        return () => {
+            scrollEl.removeEventListener("wheel", scrollerDesktop);
+            scrollEl.removeEventListener("touchstart", scrollerMobileStart);
+            scrollEl.removeEventListener("touchmove", scrollerMobileMove);
+            scrollEl.removeEventListener("touchend", scrollerMobileEnd);
+        };
     });
-
-    // function InitiateScrolling() {}
-
-    // ads the ability to scroll up and down the page
-    // window.onwheel = (event) => {
-    //     if (!scrollIsActive) {
-    //         return console.warn("waiting for intro animation to finish...");
-    //     }
-
-    //     // increases or decreases currentsection value based on going up or down, also made a clamp for it.
-    //     if (event.deltaY < 0) {
-    //         let newcurrent = currentSection + 1;
-    //         ScrollToPage(
-    //             mathFunctions.ClampInt(0, newcurrent, sections.length - 1)
-    //         );
-    //     } else if (event.deltaY > 0) {
-    //         let newcurrent = currentSection - 1;
-    //         ScrollToPage(
-    //             mathFunctions.ClampInt(0, newcurrent, sections.length - 1)
-    //         );
-    //     }
-    // };
 
     // resets window so I don't cry about it being halfway if it shouldn't be
     useEffect(() => {
@@ -107,7 +126,7 @@ function App() {
         setSections(data);
     }, []);
 
-    const isDesktop = window.innerWidth > 768 ? true : false;
+    const isDesktop = window.innerWidth > 911 ? true : false;
 
     return (
         <>
@@ -118,10 +137,6 @@ function App() {
                             scrollIsActive.current = true;
                         }}
                     ></Curtain>
-                    <DesktopNav
-                        ScrollToPageNumber={ScrollToPage}
-                        ChangeActiveClass={ChangeActiveClass}
-                    ></DesktopNav>
                 </>
             ) : (
                 <PhoneCurtain
@@ -130,6 +145,11 @@ function App() {
                     }}
                 ></PhoneCurtain>
             )}
+
+            <DesktopNav
+                ScrollToPageNumber={ScrollToPage}
+                ChangeActiveClass={ChangeActiveClass}
+            ></DesktopNav>
 
             <main>
                 <ContentSection>
@@ -140,7 +160,6 @@ function App() {
                     <AboutMe></AboutMe>
                 </ContentSection>
                 <ContentSection>
-                    <h2>My project</h2>
                     <ProjectSection></ProjectSection>
                 </ContentSection>
             </main>

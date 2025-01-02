@@ -5,6 +5,7 @@ export default function ProjectSection() {
     return (
         <>
             <div className="ProjectSection">
+                <h2>My project</h2>
                 <div className="inner">
                     <ProjectElement
                         ProjectTitle="Chocolatier"
@@ -18,12 +19,12 @@ export default function ProjectSection() {
                         ProjectTitle="NewCV"
                         ProjectLink="https://github.com/Powerboy2015/CV/tree/CV-version-2"
                         ProjectParagraph="Since it has been about a year when I did my CV, It was time to renovate a bit and utilise more of what I learned"
-                        ProjectDate="31-12-2024"
+                        ProjectDate="2 jan 2025"
                         ProjectLanguages={["JSX", "GIT"]}
                         ProjectImage="/src/assets/NewCV.png"
                     ></ProjectElement>
                 </div>
-                <a href="/project">See more projects</a>
+                <a href="/Projects">See more projects</a>
             </div>
         </>
     );

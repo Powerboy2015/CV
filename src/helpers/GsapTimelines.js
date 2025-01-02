@@ -9,4 +9,18 @@ export default class GsapTimelines {
         }
         return tl;
     }
+    static MobileNavIn(element, isrevese) {
+        let tl = gsap.timeline();
+        if (!isrevese) {
+            tl.to(element, { left: 0, duration: 0.25, ease: "sine.inOut" });
+            return tl;
+        } else {
+            tl.to(element, {
+                left: "-100%",
+                duration: 0.25,
+                ease: "sine.inOut",
+            });
+            return tl;
+        }
+    }
 }
