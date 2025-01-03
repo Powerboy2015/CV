@@ -37,7 +37,7 @@ export default class GlobeRender {
     setupScene() {
         // creates the object
         let sphere = this.CreateSphere(1, 1, 1, 0x00ff00);
-        this.loadCustomModel("src/assets/middleblobe.glb").then((data: any) => {
+        this.loadCustomModel("/middleblobe.glb").then((data: any) => {
             console.log(data.scene);
             // this.scene.add(cube);
             this.setCamera(0, 0, 5);

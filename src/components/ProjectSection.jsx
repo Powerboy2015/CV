@@ -13,7 +13,7 @@ export default function ProjectSection() {
                         ProjectParagraph="A schoolproject where me and my classmates had to make a website about a chocolatier business"
                         ProjectDate="Jun 24 2024"
                         ProjectLanguages={["HTML", "SCSS", "PHP", "JS"]}
-                        ProjectImage="/src/assets/chocolatier.png"
+                        ProjectImage="/chocolatier.png"
                     ></ProjectElement>
                     <ProjectElement
                         ProjectTitle="NewCV"
@@ -21,7 +21,7 @@ export default function ProjectSection() {
                         ProjectParagraph="Since it has been about a year when I did my CV, It was time to renovate a bit and utilise more of what I learned"
                         ProjectDate="2 jan 2025"
                         ProjectLanguages={["JSX", "GIT"]}
-                        ProjectImage="/src/assets/NewCV.png"
+                        ProjectImage="/NewCV.png"
                     ></ProjectElement>
                 </div>
                 <a href="/Projects">See more projects</a>

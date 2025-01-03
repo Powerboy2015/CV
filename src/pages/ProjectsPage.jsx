@@ -30,7 +30,7 @@ export default function ProjectsPage() {
                             ]}
                             finishdate="v1 release in august"
                             usedlangs={["react", "electron"]}
-                            imgsrc="/src/assets/electron-pokedex.png"
+                            imgsrc="/electron-pokedex.png"
                         ></ProjectsPageEl>
                         <ProjectsPageEl
                             projectName="NewCv"
@@ -48,7 +48,7 @@ export default function ProjectsPage() {
                             ]}
                             finishdate={"2 jan 2025"}
                             usedlangs={["React"]}
-                            imgsrc={"/src/assets/NewCV.png"}
+                            imgsrc={"/NewCV.png"}
                         ></ProjectsPageEl>
                         <ProjectsPageEl
                             projectName="Chocolatier"
@@ -68,7 +68,7 @@ export default function ProjectsPage() {
                                 "JS",
                                 "PHP 5",
                             ]}
-                            imgsrc="/src/assets/chocolatier.png"
+                            imgsrc="/chocolatier.png"
                         />
                         <ProjectsPageEl
                             projectName="SquareColorChanger"
@@ -78,7 +78,7 @@ export default function ProjectsPage() {
                             features={["multiple colors", "reset button"]}
                             finishdate="9 april 2024"
                             usedlangs={["html", "javascript", "Css"]}
-                            imgsrc="/src/assets/SquareColorChanger.png"
+                            imgsrc="/SquareColorChanger.png"
                         />
 
                         {/* <ProjectsPageEl projectName=""> */}
