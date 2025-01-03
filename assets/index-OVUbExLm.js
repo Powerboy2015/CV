@@ -3914,4 +3914,4 @@ Please change the parent <Route path="${v}"> to <Route path="${v==="/"?"*":`${v}
  * LICENSE.md file in the root directory of this source tree.
  *
  * @license MIT
- */function BI(r){return re.createElement(J2,{flushSync:kI.flushSync,...r})}const zI=AI([{path:"/",element:ge.jsx(PD,{})},{path:"/Projects",element:ge.jsx(kD,{})}]);xT.createRoot(document.getElementById("root")).render(ge.jsx(re.StrictMode,{children:ge.jsx(BI,{router:zI,basename:"https://zochi.space"})}));
+ */function BI(r){return re.createElement(J2,{flushSync:kI.flushSync,...r})}const zI=AI([{path:"/",element:ge.jsx(PD,{})},{path:"/Projects",element:ge.jsx(kD,{})}]);xT.createRoot(document.getElementById("root")).render(ge.jsx(re.StrictMode,{children:ge.jsx(BI,{router:zI})}));
