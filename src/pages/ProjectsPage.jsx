@@ -80,8 +80,6 @@ export default function ProjectsPage() {
                             usedlangs={["html", "javascript", "Css"]}
                             imgsrc="/SquareColorChanger.png"
                         />
-
-                        {/* <ProjectsPageEl projectName=""> */}
                     </div>
                 </div>
             </div>
